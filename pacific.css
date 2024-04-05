@@ -15,9 +15,6 @@
 header {
     background-color: #002171;
     color: #FFFFFF;
-    height: 120px;
-    padding-top: 30px;
-    padding-left: 3em;
     text-align: center;
 }
 
@@ -40,9 +37,8 @@ header a:hover {
 nav {
     font-weight: bold;
     font-size: 120%;
-    padding: 1.5em;
-    float: left;
-    width: 160px;
+    padding: 0;
+    text-align: center;
 }
 
 nav ul {
@@ -50,6 +46,10 @@ nav ul {
   margin: 0;
   padding-left: 0;
   font-size: 1.2em;
+}
+
+nav li {
+  border-bottom: 1px solid darkblue;
 }
 
 nav a {
@@ -71,9 +71,10 @@ nav a:hover {
 h1 {
   margin-bottom: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 3em;
   letter-spacing: 0.25em;
   margin-top: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 h2 {
@@ -111,25 +112,16 @@ footer {
   text-align: center;
   font-family: Georgia, Times, "Times New Roman", serif;
   padding: 2em;
-  margin-left: 190px;
   background-color: #FFFFFF;
 }
 
 #wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
   background: #90c7E3;
-  border: 1px #000033;
   background-image: linear-gradient(#FFFFFF, #90C7E3);
-  min-width: 960px;
-  max-width: 2048px;
-  box-shadow: 3px 3px 3px #333333;
 }
 
 main {
   background-color: #FFFFFF;
-  margin-left: 190px;
   padding-top: 1px;
   padding-right: 20px;
   padding-bottom: 20px;
@@ -143,7 +135,6 @@ main {
   background-image: url(images/coast2.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  margin-left: 190px;
 }
 
 #yurthero {
@@ -151,7 +142,6 @@ main {
   background-image: url(images/yurt.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  margin-left: 190px;
 }
 
 #trailhero {
@@ -159,12 +149,83 @@ main {
   background-image: url(images/trail.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  margin-left: 190px;
 }
 
-section {
-  float: left;
-  width: 33%;
-  padding-left: 2em;
-  padding-right: 2em;
+table {
+  border: 2px solid #3300cc;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 0.5em;
+  border: 2px solid #3399cc;
+}
+
+td {
+  text-align: center;
+}
+
+.text {
+  text-align: left;
+}
+
+tr:nth-of-type(odd) {
+  background-color: #F5FAFC;
+}
+
+
+@media (min-width: 600px) {
+	nav ul{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-around;
+	}
+	nav li {
+		border-bottom: none;
+	}
+	section {
+		margin-left: 2em;
+		margin-right: 2em;
+		flex: 1;
+	}
+	.flow {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+
+@media (min-width: 1024px) {
+	#wrapper {
+		margin: auto;
+		width: 80%;
+		border: 1px solid darkblue;
+		box-shadow: 3px 3px darkblue;
+	}	
+	nav {
+		text-align: left;
+		padding-left: 1em;
+	}
+	@supports (display: grid) {
+		nav ul {
+			flex-direction: column;
+			padding-top: 1em;
+			text-align: left;
+		}
+		header {grid-area: header;}
+		nav {grid-area: nav;}
+		main {grid-area: main}
+		footer {grid-area: footer}
+		.hero {grid-area: hero;}
+		
+		#wrapper {
+			display: grid;
+			grid-template:
+				"header header"
+				"nav hero"
+				"nav main"
+				"nav footer" / 180px;
+		}
+	}
 }
